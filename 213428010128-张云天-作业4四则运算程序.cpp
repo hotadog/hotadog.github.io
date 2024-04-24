@@ -1,31 +1,29 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include<stdio.h>
 #include<math.h>
 #include<windows.h>
 
-int n;//ÌâÄ¿ÊıÁ¿
-int max;//ÊäÈë×î´óÊı
-int symbol;//ÔËËã·û
-int flag_decimal; //ÊÇ·ñÊÇĞ¡Êı
-int flag_parenthese;//ÊÇ·ñÊÇÀ¨ºÅ
-int flag_file;//ÊÇ·ñÉú³ÉÎÄ¼ş
+int n;//é¢˜ç›®æ•°é‡
+int max;//è¾“å…¥æœ€å¤§æ•°
+int symbol;//è¿ç®—ç¬¦
+int flag_decimal; //æ˜¯å¦æ˜¯å°æ•°
+int flag_parenthese;//æ˜¯å¦æ˜¯æ‹¬å·
+int flag_file;//æ˜¯å¦ç”Ÿæˆæ–‡ä»¶
 FILE* r;
 
-void correctAnswer(int y[])       //ÕûÊıÔËËã´ğ°¸
+void correctAnswer(int y[])       //æ•´æ•°è¿ç®—ç­”æ¡ˆ
 {
 	int i;
-	if (flag_file == 2)      //ÎÄ¼şÊä³ö
+	if (flag_file == 2)      //æ–‡ä»¶è¾“å‡º
 	{
-		fprintf(r, "\nÕıÈ·´ğ°¸£º\n");
+		fprintf(r, "\næ­£ç¡®ç­”æ¡ˆï¼š\n");
 		for (i = 1; i < n + 1; i++)
 		{
 			fprintf(r, "(%d) %d\n", i, y[i]);
 		}
 	}
-	else         //ÆÁÄ»Êä³ö
+	else         //å±å¹•è¾“å‡º
 	{
-		printf("\nÕıÈ·´ğ°¸£º\n");
+		printf("\næ­£ç¡®ç­”æ¡ˆï¼š\n");
 		for (i = 1; i < n + 1; i++)
 		{
 			printf("(%d) %d\n", i, y[i]);
@@ -33,12 +31,12 @@ void correctAnswer(int y[])       //ÕûÊıÔËËã´ğ°¸
 	}
 }
 
-void  decimalsAnswer(double y[])     //Ğ¡ÊıÔËËã´ğ°¸
+void  decimalsAnswer(double y[])     //å°æ•°è¿ç®—ç­”æ¡ˆ
 {
 	int i;
 	if (flag_file == 1)
 	{
-		printf("\nÕıÈ·´ğ°¸£º\n");
+		printf("\næ­£ç¡®ç­”æ¡ˆï¼š\n");
 		for (i = 1; i < n + 1; i++)
 		{
 			printf("(%d) %.2f\n", i, y[i]);
@@ -46,7 +44,7 @@ void  decimalsAnswer(double y[])     //Ğ¡ÊıÔËËã´ğ°¸
 	}
 	else
 	{
-		fprintf(r, "\nÕıÈ·´ğ°¸£º\n");
+		fprintf(r, "\næ­£ç¡®ç­”æ¡ˆï¼š\n");
 		for (i = 1; i < n + 1; i++)
 		{
 			fprintf(r, "(%d) %.2f\n", i, y[i]);
@@ -54,12 +52,12 @@ void  decimalsAnswer(double y[])     //Ğ¡ÊıÔËËã´ğ°¸
 	}
 }
 
-void integer()  //ÕûÊıËÄÔòÔËËã
+void integer()  //æ•´æ•°å››åˆ™è¿ç®—
 {
 	int i;
 	int a, b;
-	int x[1000];//´ğ°¸
-	char c;//·ûºÅ
+	int x[1000];//ç­”æ¡ˆ
+	char c;//ç¬¦å·
 	for (i = 1; i < n + 1; i++)
 	{
 		a = rand() % max;
@@ -97,10 +95,10 @@ void integer()  //ÕûÊıËÄÔòÔËËã
 			fprintf(r, "(%d) %d%c%d=\n", i, a, c, b);
 		}
 	}
-	correctAnswer(x);   //»ñÈ¡´ğ°¸
+	correctAnswer(x);   //è·å–ç­”æ¡ˆ
 }
 
-void  decimals()  //Ğ¡ÊıµÄËÄÔòÔËËã
+void  decimals()  //å°æ•°çš„å››åˆ™è¿ç®—
 {
 	int i;
 	double x[1000], a, b;
@@ -142,15 +140,15 @@ void  decimals()  //Ğ¡ÊıµÄËÄÔòÔËËã
 			fprintf(r, "(%d) %.2f%c%.2f=\n", i, a, c, b);
 		}
 	}
-	decimalsAnswer(x);   //»ñÈ¡´ğ°¸
+	decimalsAnswer(x);   //è·å–ç­”æ¡ˆ
 }
 
-void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
+void  mixinteger()  //æ··åˆè¿ç®—ï¼ˆæ•´æ•°ï¼‰
 {
 	int i;
 	int a, b, c;
-	int x[1000];//´ğ°¸
-	char d, e;//·ûºÅ
+	int x[1000];//ç­”æ¡ˆ
+	char d, e;//ç¬¦å·
 	for (i = 1; i < n + 1; i++)
 	{
 		a = rand() % max;
@@ -160,11 +158,11 @@ void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
 		{
 			d = '-';
 			e = '*';
-			if (flag_parenthese == 1)   //ÎŞÀ¨ºÅ
+			if (flag_parenthese == 1)   //æ— æ‹¬å·
 			{
 				x[i] = a - b * c;
 			}
-			else             //ÓĞÀ¨ºÅ
+			else             //æœ‰æ‹¬å·
 			{
 				x[i] = (a - b) * c;
 			}
@@ -177,11 +175,11 @@ void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
 			{
 				c = rand() % max;
 			}
-			if (flag_parenthese == 1)//ÓĞÀ¨ºÅ
+			if (flag_parenthese == 1)//æœ‰æ‹¬å·
 			{
 				x[i] = a + b / c;
 			}
-			else//ÎŞÀ¨ºÅ
+			else//æ— æ‹¬å·
 			{
 			x[i] = (a + b) / c;
 			}
@@ -217,7 +215,7 @@ void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
 			}
 		}
 
-	if (flag_file == 1)   //Êä³öµ½ÆÁÄ»
+	if (flag_file == 1)   //è¾“å‡ºåˆ°å±å¹•
 		{
 			if (flag_parenthese == 1)
 			{
@@ -228,7 +226,7 @@ void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
 				printf("(%d) (%d%c%d)%c%d=\n", i, a, d, b, e, c);
 			}
 		}
-		else //Êä³öµ½ÎÄ¼ş
+		else //è¾“å‡ºåˆ°æ–‡ä»¶
 		{
 			if (flag_parenthese == 1)
 			{
@@ -240,10 +238,10 @@ void  mixinteger()  //»ìºÏÔËËã£¨ÕûÊı£©
 			}
 		}
 	}
-	correctAnswer(x);   //»ñÈ¡´ğ°¸
+	correctAnswer(x);   //è·å–ç­”æ¡ˆ
 }
 
-void mixDecimals()  //»ìºÏÔËËã£¨Ğ¡Êı£©
+void mixDecimals()  //æ··åˆè¿ç®—ï¼ˆå°æ•°ï¼‰
 {
 	int i;
 	double x[1000], a, b, c;
@@ -257,7 +255,7 @@ void mixDecimals()  //»ìºÏÔËËã£¨Ğ¡Êı£©
 		{
 			d = '-';
 			e = '*';
-			if (flag_parenthese == 1)   //ÓĞÀ¨ºÅ
+			if (flag_parenthese == 1)   //æœ‰æ‹¬å·
 			{
 				x[i] = a - b * c;
 			}
@@ -336,54 +334,54 @@ void mixDecimals()  //»ìºÏÔËËã£¨Ğ¡Êı£©
 			}
 		}
 	}
-	decimalsAnswer(x);   //»ñÈ¡´ğ°¸
+	decimalsAnswer(x);   //è·å–ç­”æ¡ˆ
 }
 
 int main()
 {
-	printf("\n==============================»¶Ó­½øÈëĞ¡Ñ§ÉúËÄÔòÔËËã×Ô¶¯Éú³ÉÏµÍ³==============================\n\t\t\t\t( ×¢Òâ£ºËùÓĞÊäÈëµÄÊı¾ùÎª³£Êı )\n\n");
-	printf("1.ÇëÊäÈëÌâÄ¿¸öÊı£º");
+	printf("\n==============================æ¬¢è¿è¿›å…¥å°å­¦ç”Ÿå››åˆ™è¿ç®—è‡ªåŠ¨ç”Ÿæˆç³»ç»Ÿ==============================\n\t\t\t\t( æ³¨æ„ï¼šæ‰€æœ‰è¾“å…¥çš„æ•°å‡ä¸ºå¸¸æ•° )\n\n");
+	printf("1.è¯·è¾“å…¥é¢˜ç›®ä¸ªæ•°ï¼š");
 	scanf_s("%d", &n);
-	printf("\n2.ÇëÑ¡ÔñÔËËã·½·¨£¨1.¼Ó·¨ 2.¼õ·¨ 3.³Ë·¨ 4.³ı·¨ 5.»ìºÏÔËËã)£º");
+	printf("\n2.è¯·é€‰æ‹©è¿ç®—æ–¹æ³•ï¼ˆ1.åŠ æ³• 2.å‡æ³• 3.ä¹˜æ³• 4.é™¤æ³• 5.æ··åˆè¿ç®—)ï¼š");
 	scanf_s("%d", &symbol);
-	printf("\n3.ÇëÊäÈë×î´óÊı£º");
+	printf("\n3.è¯·è¾“å…¥æœ€å¤§æ•°ï¼š");
 	scanf_s("%d", &max);
-	printf("\n4.ÊÇ·ñº¬ÓĞĞ¡Êı£¨1.ÎŞ 2.ÓĞ)£º");
+	printf("\n4.æ˜¯å¦å«æœ‰å°æ•°ï¼ˆ1.æ—  2.æœ‰)ï¼š");
 	scanf_s("%d", &flag_decimal);
-	printf("\n5.ÊÇ·ñº¬ÓĞÀ¨ºÅ£¨1.ÎŞ 2.ÓĞ)£º×¢£º½öÔÚ»ìºÏÔËËãÊ±Ñ¡Ôñ£¬ÆäÓàÔËËãÒ»ÂÉÎªÎŞ");
+	printf("\n5.æ˜¯å¦å«æœ‰æ‹¬å·ï¼ˆ1.æ—  2.æœ‰)ï¼šæ³¨ï¼šä»…åœ¨æ··åˆè¿ç®—æ—¶é€‰æ‹©ï¼Œå…¶ä½™è¿ç®—ä¸€å¾‹ä¸ºæ— ");
 	scanf_s("%d", &flag_parenthese);
-	printf("\n6.Êä³ö·½Ê½£¨1.ÏÔÊ¾ÔÚÆÁÄ»   2.Êä³öµ½ÎÄ¼ş)£º");
+	printf("\n6.è¾“å‡ºæ–¹å¼ï¼ˆ1.æ˜¾ç¤ºåœ¨å±å¹•   2.è¾“å‡ºåˆ°æ–‡ä»¶)ï¼š");
 	scanf_s("%d", &flag_file);
 	if (flag_file == 2)
 	{
-		printf("\nÒÑÉú³É  ¡®ÌâÄ¿.txt¡¯  ÎÄ¼şµ½  ¡®ËÄÔòÔËËã.exe¡¯  ËùÔÚµÄÎÄ¼ş¼ĞÖĞ");
+		printf("\nå·²ç”Ÿæˆ  â€˜é¢˜ç›®.txtâ€™  æ–‡ä»¶åˆ°  â€˜å››åˆ™è¿ç®—.exeâ€™  æ‰€åœ¨çš„æ–‡ä»¶å¤¹ä¸­");
 	}
-	r = fopen("ÌâÄ¿.txt", "w");
+	r = fopen("é¢˜ç›®.txt", "w");
 	printf("\n\n");
 	if (symbol != 5)
 	{
 		if (flag_decimal == 1)
 		{
-			integer();  //·Ç»ìºÏÕûÊıÔËËã
+			integer();  //éæ··åˆæ•´æ•°è¿ç®—
 		}
 		else
 		{
-			decimals();  //·Ç»ìºÏĞ¡ÊıÔËËã
+			decimals();  //éæ··åˆå°æ•°è¿ç®—
 		}
 	}
 	else
 	{
 		if (flag_decimal == 1)
 		{
-			mixinteger();  //»ìºÏÕûÊıÔËËã
+			mixinteger();  //æ··åˆæ•´æ•°è¿ç®—
 		}
 		else
 		{
-			mixDecimals();  //»ìºÏĞ¡ÊıÔËËã
+			mixDecimals();  //æ··åˆå°æ•°è¿ç®—
 		}
 	}
 	fclose(r);
-	printf("\nÊÇ·ñÔÙ´ÎÔËĞĞ¸Ã³ÌĞò?   (1.¼ÌĞø  2.ÍË³ö)\n");
+	printf("\næ˜¯å¦å†æ¬¡è¿è¡Œè¯¥ç¨‹åº?   (1.ç»§ç»­  2.é€€å‡º)\n");
 	int res;
 	scanf_s("%d", &res);
 	if (res == 1)
